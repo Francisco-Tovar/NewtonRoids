@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://dqaiyn5nqggpj"]
+[gd_scene load_steps=2 format=3 uid="uid://dqaiyn5nqggpj"]
+
+[ext_resource type="PackedScene" uid="uid://c20w1oa160mph" path="res://scenes/nave.tscn" id="1_82h87"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_82h87")]

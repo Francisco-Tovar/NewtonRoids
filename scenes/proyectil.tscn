@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://day0fkau407a6"]
+
+[node name="proyectil" type="AnimatableBody2D"]
