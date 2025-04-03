@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://w828ktoh2m3h"]
+
+[ext_resource type="AudioStream" uid="uid://bupq0xu7d3ewj" path="res://assets/BGM/Digital Frontier.mp3" id="1_7ngfr"]
+
+[node name="Musica" type="AudioStreamPlayer2D"]
+position = Vector2(10, -6)
+stream = ExtResource("1_7ngfr")
+autoplay = true
+bus = &"Music"

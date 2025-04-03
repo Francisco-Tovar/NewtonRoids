@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://dxyx8bxfv1ggd"]
+[gd_scene load_steps=5 format=3 uid="uid://dxyx8bxfv1ggd"]
 
-[node name="HoyoNegro" type="AnimatableBody2D"]
+[ext_resource type="Script" path="res://scripts/hoyo_negro.gd" id="1_kv2hs"]
+[ext_resource type="Texture2D" uid="uid://bq51tg40v6gp7" path="res://assets/PNG/Blackhole2.png" id="2_hqk4q"]
+[ext_resource type="Texture2D" uid="uid://2nw3ca6i3u30" path="res://assets/PNG/Blackhole1.png" id="3_le2ql"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2so8"]
+radius = 179.31
+
+[node name="hoyoNegro" type="Area2D"]
+modulate = Color(0.952941, 1, 1, 0.627451)
+scale = Vector2(0.29, 0.29)
+script = ExtResource("1_kv2hs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.509804)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_hqk4q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.819608)
+z_index = 10
+texture = ExtResource("3_le2ql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9.53674e-07, -1.19209e-07)
+shape = SubResource("CircleShape2D_n2so8")

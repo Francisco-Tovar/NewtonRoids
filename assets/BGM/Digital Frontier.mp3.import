@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bupq0xu7d3ewj"
+path="res://.godot/imported/Digital Frontier.mp3-75f575cd50f2c4a60a98c9b6403c93d3.mp3str"
+
+[deps]
+
+source_file="res://assets/BGM/Digital Frontier.mp3"
+dest_files=["res://.godot/imported/Digital Frontier.mp3-75f575cd50f2c4a60a98c9b6403c93d3.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
