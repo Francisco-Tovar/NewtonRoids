@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c20w1oa160mph"]
 
-[ext_resource type="Script" path="res://scripts/nave.gd" id="1_75513"]
+[ext_resource type="Script" uid="uid://bxkw3tu7egayo" path="res://scripts/nave.gd" id="1_75513"]
 [ext_resource type="Texture2D" uid="uid://qe4bgn1x2yk5" path="res://assets/PNG/playerShip1_blue.png" id="1_wvv4c"]
 
 [node name="nave" type="CharacterBody2D"]
