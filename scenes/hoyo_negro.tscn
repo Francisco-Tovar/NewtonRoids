@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dxyx8bxfv1ggd"]
 
-[ext_resource type="Script" path="res://scripts/hoyo_negro.gd" id="1_kv2hs"]
+[ext_resource type="Script" uid="uid://pntjuv6f40ey" path="res://scripts/hoyo_negro.gd" id="1_kv2hs"]
 [ext_resource type="Texture2D" uid="uid://bq51tg40v6gp7" path="res://assets/PNG/Blackhole2.png" id="2_hqk4q"]
 [ext_resource type="Texture2D" uid="uid://2nw3ca6i3u30" path="res://assets/PNG/Blackhole1.png" id="3_le2ql"]
 
