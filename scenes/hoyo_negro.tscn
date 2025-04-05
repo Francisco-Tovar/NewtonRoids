@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_n2so8"]
 radius = 179.31
 
-[node name="hoyoNegro" type="Area2D"]
+[node name="hoyoNegro" type="Area2D" groups=["hoyonegro"]]
 modulate = Color(0.952941, 1, 1, 0.627451)
 scale = Vector2(0.29, 0.29)
 script = ExtResource("1_kv2hs")
@@ -25,3 +25,5 @@ texture = ExtResource("3_le2ql")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(9.53674e-07, -1.19209e-07)
 shape = SubResource("CircleShape2D_n2so8")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
