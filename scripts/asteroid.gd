@@ -1,8 +1,9 @@
 extends Area2D
 
-@export var mass: int = 10
+@export var mass: int = 100
 @export var min_speed: float = 15.0
 @export var max_speed: float = 30.0
+
 
 var velocity = Vector2.ZERO
 
@@ -31,3 +32,14 @@ func _wrap_around_screen():
 	elif position.x > screen_size.x: position.x = 0
 	if position.y < 0: position.y = screen_size.y
 	elif position.y > screen_size.y: position.y = 0
+
+func _on_area_entered(other: Area2D) -> void:
+	if other.is_in_group("hoyonegro"):
+		print("SCORE!")
+		queue_free()
+	elif other.is_in_group("proyectil"):				
+		print("Ateroid hit!")		
+		queue_free()
+	elif other.is_in_group("nave"):
+		print("Asteroid crash!")		
+		queue_free()
