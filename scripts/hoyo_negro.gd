@@ -18,3 +18,8 @@ func _process(delta: float) -> void:
 	sp2.scale.x = clamp( ssx, 0.45, 0.75 );
 	var ssy = sp2.scale.x + ran;
 	sp2.scale.y = clamp( ssy, 0.45, 0.75 );
+
+
+func _on_area_entered(other: Area2D) -> void:
+	if other.is_in_group("nave"):
+		get_tree().reload_current_scene()

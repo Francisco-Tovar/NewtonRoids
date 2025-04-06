@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c20w1oa160mph"]
+[gd_scene load_steps=4 format=3 uid="uid://c20w1oa160mph"]
 
 [ext_resource type="Script" uid="uid://bxkw3tu7egayo" path="res://scripts/nave.gd" id="1_75513"]
 [ext_resource type="Texture2D" uid="uid://qe4bgn1x2yk5" path="res://assets/PNG/playerShip1_blue.png" id="1_wvv4c"]
+[ext_resource type="AudioStream" uid="uid://dvr43k105ydca" path="res://assets/SFX/sfx_laser1.ogg" id="3_b8a51"]
 
 [node name="nave" type="CharacterBody2D"]
 z_index = 5
@@ -9,10 +10,27 @@ scale = Vector2(0.3, 0.3)
 motion_mode = 1
 script = ExtResource("1_75513")
 
+[node name="Area2D" type="Area2D" parent="." groups=["nave"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+rotation = 1.5708
+polygon = PackedVector2Array(-6.66667, 33.3333, -13.3333, 26.6667, -43.3333, 20, -46.6667, -3.33333, -33.3333, 3.33333, -10, -13.3333, -6.66667, -36.6667, 6.66667, -36.6667, 10, -13.3333, 36.6667, 3.33333, 46.6667, -3.33333, 43.3333, 23.3333, 13.3333, 26.6667, 6.66667, 36.6667, -6.66667, 36.6667)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("1_wvv4c")
 
+[node name="gun" type="Node2D" parent="."]
+position = Vector2(43.3333, 0)
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-rotation = 1.5708
+visible = false
+rotation = -3.14159
 polygon = PackedVector2Array(-6.66667, 33.3333, -13.3333, 26.6667, -43.3333, 20, -46.6667, -3.33333, -33.3333, 3.33333, -10, -13.3333, -6.66667, -36.6667, 6.66667, -36.6667, 10, -13.3333, 36.6667, 3.33333, 46.6667, -3.33333, 43.3333, 23.3333, 13.3333, 26.6667, 6.66667, 36.6667, -6.66667, 36.6667)
+
+[node name="sfx_shot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_b8a51")
+pitch_scale = 0.78
+bus = &"SFX"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
