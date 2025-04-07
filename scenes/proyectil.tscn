@@ -1,3 +1,34 @@
-[gd_scene format=3 uid="uid://day0fkau407a6"]
+[gd_scene load_steps=4 format=3 uid="uid://day0fkau407a6"]
 
-[node name="proyectil" type="AnimatableBody2D"]
+[ext_resource type="Texture2D" uid="uid://bh3l2g68t4722" path="res://assets/PNG/Lasers/laserBlue01.png" id="1_fmodo"]
+[ext_resource type="Script" uid="uid://u2vejwi6b3l5" path="res://scripts/proyectil.gd" id="1_w2e24"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w2e24"]
+radius = 3.0
+height = 22.0
+
+[node name="proyectil" type="CharacterBody2D" groups=["proyectil"]]
+script = ExtResource("1_w2e24")
+
+[node name="Area2D" type="Area2D" parent="." groups=["proyectil"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_w2e24")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.491386, 2.14792e-08)
+rotation = 1.5708
+scale = Vector2(1, 0.447193)
+texture = ExtResource("1_fmodo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(1, 0.3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+rotation = -3.14159
+shape = SubResource("CapsuleShape2D_w2e24")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
