@@ -1,21 +1,17 @@
-extends CharacterBody2D
+extends CharacterBody2D  # Cambiado de Area2D a CharacterBody2D
 
-var pos : Vector2
-var rota : float
-var dir : float
-@export var speed = 100
-@export var potencia = 1
+var dir := 0.0
+var potencia := 1.0
+var rota := 0.0
+var velocidad_base := 300.0
 
-func _ready() -> void:
-	global_position=pos
-	global_rotation=rota
+func _ready():
+	rotation = rota
+	scale = Vector2.ONE * clamp(potencia, 1.0, 3.0)
 
-func _physics_process(delta: float) -> void:
-	velocity = Vector2(speed * potencia,0).rotated(dir)
-	move_and_slide()
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()	
-
-func _on_area_entered(other: Area2D) -> void:
-	queue_free()
+func _physics_process(delta):
+	var move_vec = Vector2.RIGHT.rotated(dir) * velocidad_base * potencia * delta
+	position += move_vec
+	# Para CharacterBody2D, deberías usar:
+	# velocity = move_vec / delta  # Convertir a velocidad por segundo
+	# move_and_slide()
