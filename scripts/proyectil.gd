@@ -15,3 +15,6 @@ func _physics_process(delta):
 	# Para CharacterBody2D, deberías usar:
 	# velocity = move_vec / delta  # Convertir a velocidad por segundo
 	# move_and_slide()
+
+func _on_area_2d_area_entered(other: Area2D) -> void:
+	queue_free()

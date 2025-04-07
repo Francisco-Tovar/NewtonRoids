@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 		barra_potencia.visible = false
 		var potencia_disparo = clamp(tiempo_carga, 1.0, MAX_POTENCIA)
 		fire(potencia_disparo)
-
+		print("Potencia: " + str(potencia_disparo))
 	# Mientras se mantiene apretado, carga
 	if cargando_disparo:
 		tiempo_carga += delta
@@ -58,7 +58,7 @@ func fire(potencia: float):
 	get_parent().add_child(_disparo)
 
 	# Retroceso proporcional a la potencia
-	var recoil_force = -Vector2(1, 0).rotated(rotation) * (0.3 * potencia)
+	var recoil_force = -Vector2(1, 0).rotated(rotation) * (0.5 * potencia)
 	motion += recoil_force
 
 	can_fire = false
@@ -79,10 +79,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		motion = motion.lerp(Vector2(0,0), DEC)
 		
-	if Input.is_action_pressed("decelerate"):
-		motion = motion.lerp(-moveDir, ACC)
-	else:
-		motion = motion.lerp(Vector2(0,0), DEC)
+	#if Input.is_action_pressed("decelerate"):
+		#motion = motion.lerp(-moveDir, ACC)
+	#else:
+		#motion = motion.lerp(Vector2(0,0), DEC)
 	
 	position += motion * MOVE_SPEED * delta
 	
