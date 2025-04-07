@@ -3,6 +3,7 @@ extends Area2D
 @export var mass: int = 100
 @export var min_speed: float = 15.0
 @export var max_speed: float = 30.0
+@export var rotation_speed: float = 1.0
 
 
 var velocity = Vector2.ZERO
@@ -11,9 +12,11 @@ func _ready():
 	randomize()
 	_set_random_direction()
 	_set_random_speed()
+	rotation_speed = randf_range(-1, 1)
 
 func _process(delta):
 	position += velocity * delta
+	rotation += rotation_speed * delta
 	_wrap_around_screen()
 
 func _set_random_direction():
