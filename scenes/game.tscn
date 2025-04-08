@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqaiyn5nqggpj"]
+[gd_scene load_steps=10 format=3 uid="uid://dqaiyn5nqggpj"]
 
 [ext_resource type="Script" uid="uid://bxagfp1ket7d" path="res://scripts/game.gd" id="1_5xocs"]
 [ext_resource type="PackedScene" uid="uid://c20w1oa160mph" path="res://scenes/nave.tscn" id="1_82h87"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxyx8bxfv1ggd" path="res://scenes/hoyo_negro.tscn" id="5_1fv1s"]
 [ext_resource type="PackedScene" uid="uid://cf2ra0h1e6hp0" path="res://scenes/asteroid.tscn" id="6_p57ef"]
 [ext_resource type="Script" uid="uid://d3tbpobp4c7dy" path="res://scripts/asteroid_spawner.gd" id="6_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://w828ktoh2m3h" path="res://scenes/game_music.tscn" id="8_gee14"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0eskj"]
 shader = ExtResource("2_57tv2")
@@ -42,3 +43,5 @@ scale = Vector2(0.25, 0.25)
 [node name="AsteroidSpawner" type="Node2D" parent="."]
 script = ExtResource("6_u5sy4")
 asteroid_scene = ExtResource("6_p57ef")
+
+[node name="Musica" parent="." instance=ExtResource("8_gee14")]

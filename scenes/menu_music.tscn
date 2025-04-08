@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds75sko27uf2g"]
+
+[ext_resource type="AudioStream" uid="uid://cixf70syf0lwv" path="res://assets/BGM/Monotolic.mp3" id="1_ydaxe"]
+
+[node name="MenuMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_ydaxe")
+autoplay = true
+bus = &"Music"
