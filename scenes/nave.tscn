@@ -6,7 +6,6 @@
 
 [node name="nave" type="CharacterBody2D"]
 z_index = 5
-scale = Vector2(0.3, 0.3)
 motion_mode = 1
 script = ExtResource("1_75513")
 
@@ -24,7 +23,6 @@ texture = ExtResource("1_wvv4c")
 position = Vector2(43.3333, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
 rotation = -3.14159
 polygon = PackedVector2Array(-6.66667, 33.3333, -13.3333, 26.6667, -43.3333, 20, -46.6667, -3.33333, -33.3333, 3.33333, -10, -13.3333, -6.66667, -36.6667, 6.66667, -36.6667, 10, -13.3333, 36.6667, 3.33333, 46.6667, -3.33333, 43.3333, 23.3333, 13.3333, 26.6667, 6.66667, 36.6667, -6.66667, 36.6667)
 
@@ -32,5 +30,11 @@ polygon = PackedVector2Array(-6.66667, 33.3333, -13.3333, 26.6667, -43.3333, 20,
 stream = ExtResource("3_b8a51")
 pitch_scale = 0.78
 bus = &"SFX"
+
+[node name="BarraPotencia" type="TextureProgressBar" parent="."]
+offset_left = 318.0
+offset_top = -132.0
+offset_right = 428.0
+offset_bottom = -92.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
