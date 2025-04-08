@@ -39,9 +39,8 @@ func _on_area_entered(other: Area2D) -> void:
 	if other.is_in_group("hoyonegro"):
 		print("SCORE!")
 		queue_free()
-	elif other.is_in_group("proyectil"):				
-		print("Ateroid hit!")		
+	elif other.is_in_group("proyectil"):
 		queue_free()
 	elif other.is_in_group("nave"):
-		print("Asteroid crash!")		
+		print("Asteroid crash!")
 		queue_free()

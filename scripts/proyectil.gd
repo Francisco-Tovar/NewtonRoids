@@ -17,4 +17,8 @@ func _physics_process(delta):
 	# move_and_slide()
 
 func _on_area_2d_area_entered(other: Area2D) -> void:
-	queue_free()
+	if other.is_in_group("Asteroid"):		
+		print("proyectil hit asteroid")
+		queue_free()	
+	elif other.is_in_group("hoyonegro"):		
+		queue_free()
