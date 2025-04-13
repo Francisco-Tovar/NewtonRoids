@@ -5,6 +5,7 @@ extends Area2D
 @export var max_speed: float = 30.0
 @export var rotation_speed: float = 1.0
 
+
 var velocity = Vector2.ZERO
 
 func _ready():
