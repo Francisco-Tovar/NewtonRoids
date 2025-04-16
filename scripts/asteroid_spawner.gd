@@ -4,6 +4,7 @@ extends Node2D
 @export var max_asteroids: int = 10
 @export var spawn_margin: float = 100.0
 
+
 func _ready():
 	spawn_asteroids()
 
