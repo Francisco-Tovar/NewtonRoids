@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c20w1oa160mph"]
+[gd_scene load_steps=5 format=3 uid="uid://c20w1oa160mph"]
 
 [ext_resource type="Script" uid="uid://bxkw3tu7egayo" path="res://scripts/nave.gd" id="1_75513"]
 [ext_resource type="Texture2D" uid="uid://qe4bgn1x2yk5" path="res://assets/PNG/playerShip1_blue.png" id="1_wvv4c"]
 [ext_resource type="AudioStream" uid="uid://dvr43k105ydca" path="res://assets/SFX/sfx_laser1.ogg" id="3_b8a51"]
+[ext_resource type="AudioStream" uid="uid://culalbgb5itxv" path="res://assets/SFX/Ship Hit.wav" id="4_ja7aa"]
 
 [node name="nave" type="CharacterBody2D"]
 z_index = 5
@@ -31,10 +32,8 @@ stream = ExtResource("3_b8a51")
 pitch_scale = 0.78
 bus = &"SFX"
 
-[node name="BarraPotencia" type="TextureProgressBar" parent="."]
-offset_left = 318.0
-offset_top = -132.0
-offset_right = 428.0
-offset_bottom = -92.0
+[node name="SFX_shipCrash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ja7aa")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

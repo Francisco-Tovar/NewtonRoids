@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5irabh814lac"]
+
+[ext_resource type="AudioStream" uid="uid://cqrpi21gkwdpg" path="res://assets/SFX/confirmation_002.ogg" id="1_c5g1q"]
+
+[node name="clickconfirmation" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_c5g1q")
+bus = &"SFX"

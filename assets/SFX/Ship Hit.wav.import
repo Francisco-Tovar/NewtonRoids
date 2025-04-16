@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://culalbgb5itxv"
+path="res://.godot/imported/Ship Hit.wav-1ff6b0d3af3b18484ecc313b2d2de081.sample"
+
+[deps]
+
+source_file="res://assets/SFX/Ship Hit.wav"
+dest_files=["res://.godot/imported/Ship Hit.wav-1ff6b0d3af3b18484ecc313b2d2de081.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

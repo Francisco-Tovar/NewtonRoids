@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqaiyn5nqggpj"]
+[gd_scene load_steps=14 format=3 uid="uid://dqaiyn5nqggpj"]
 
 [ext_resource type="Script" uid="uid://bxagfp1ket7d" path="res://scripts/game.gd" id="1_5xocs"]
 [ext_resource type="PackedScene" uid="uid://c20w1oa160mph" path="res://scenes/nave.tscn" id="1_82h87"]
 [ext_resource type="Shader" uid="uid://gwe5de1v1qgv" path="res://Shaders/scroll.gdshader" id="2_57tv2"]
-[ext_resource type="PackedScene" uid="uid://dc4rb8ld4tq3k" path="res://scenes/game_manager.tscn" id="2_kvpfn"]
+[ext_resource type="Script" uid="uid://tt1fgp4fs06x" path="res://scripts/score.gd" id="3_dinhu"]
 [ext_resource type="Texture2D" uid="uid://dxpqft1towtb1" path="res://assets/Backgrounds/black.png" id="3_kr8jx"]
+[ext_resource type="Texture2D" uid="uid://j338fysmaonr" path="res://assets/PNG/UI/s_score.png" id="3_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://vp80poax5q8a" path="res://scenes/powerbar.tscn" id="3_vtaks"]
 [ext_resource type="Theme" uid="uid://cygqnmv1bfoae" path="res://assets/score_theme.tres" id="4_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://dxyx8bxfv1ggd" path="res://scenes/hoyo_negro.tscn" id="5_1fv1s"]
@@ -20,16 +21,53 @@ shader_parameter/ySpeed = 0.1
 [node name="Juego" type="Node2D"]
 script = ExtResource("1_5xocs")
 
-[node name="GameManager" parent="." instance=ExtResource("2_kvpfn")]
-
 [node name="PowerBar" parent="." instance=ExtResource("3_vtaks")]
 unique_name_in_owner = true
 z_index = 2
 offset_left = 4.0
-offset_top = 459.0
+offset_top = 436.0
 offset_right = 256.0
-offset_bottom = 499.0
-scale = Vector2(0.44, 0.400004)
+offset_bottom = 476.0
+
+[node name="Score" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 566.0
+offset_top = 28.0
+offset_right = 566.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.99261, 1.94208)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("3_dinhu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Score"]
+texture = ExtResource("3_kvpfn")
+
+[node name="scoreLabel" type="Label" parent="Score"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 14.3687
+offset_top = -8.75349
+offset_right = 51.3687
+offset_bottom = 31.2465
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.171291, 0.349986)
+theme = ExtResource("4_kvpfn")
+text = "00000000"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="camara" type="Camera2D" parent="."]
 position = Vector2(320, 241)
@@ -54,20 +92,8 @@ scale = Vector2(0.21, 0.21)
 position = Vector2(316, 405)
 scale = Vector2(0.25, 0.25)
 
-[node name="Musica" parent="." instance=ExtResource("8_gee14")]
-
 [node name="AsteroidSpawner" type="Node2D" parent="."]
-z_index = 3
 script = ExtResource("6_u5sy4")
 asteroid_scene = ExtResource("6_p57ef")
 
-[node name="helpLabel" type="Label" parent="."]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 129.0
-offset_bottom = 27.0
-theme = ExtResource("4_kvpfn")
-theme_override_font_sizes/font_size = 7
-text = "Esc: Main Menu       F1: Reset"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Musica" parent="." instance=ExtResource("8_gee14")]

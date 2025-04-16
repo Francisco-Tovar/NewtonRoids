@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ivtji8whdie"]
+
+[ext_resource type="Texture2D" uid="uid://j338fysmaonr" path="res://assets/PNG/UI/s_score.png" id="1_8juob"]
+[ext_resource type="Theme" uid="uid://cygqnmv1bfoae" path="res://assets/score_theme.tres" id="2_bak1h"]
+[ext_resource type="Script" uid="uid://tt1fgp4fs06x" path="res://scripts/score.gd" id="3_plgac"]
+
+[node name="Score" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 529.0
+offset_top = 6.0
+offset_right = 762.0
+offset_bottom = -321.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.12255, 0.144782)
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("3_plgac")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(448.797, 95.4365)
+scale = Vector2(18, 10)
+texture = ExtResource("1_8juob")
+
+[node name="scoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -375.243
+offset_top = -76.5
+offset_right = -50.2432
+offset_bottom = 70.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_bak1h")
+theme_override_font_sizes/font_size = 130
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1

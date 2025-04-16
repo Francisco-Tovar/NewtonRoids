@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu0td45qojfg2"]
+
+[ext_resource type="AudioStream" uid="uid://dgva54dvdsbiu" path="res://assets/SFX/Hit.wav" id="1_ug141"]
+
+[node name="sfx_hit" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_ug141")
+bus = &"SFX"

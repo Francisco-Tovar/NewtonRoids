@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://vp80poax5q8a"]
+
+[ext_resource type="Script" uid="uid://dj0f11kx5eua6" path="res://scripts/powerbar.gd" id="1_mdxcd"]
+[ext_resource type="Texture2D" uid="uid://cf3n85vfatf2b" path="res://assets/PNG/UI/s_armor_strip5.png" id="1_xa2x4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwlfd"]
+atlas = ExtResource("1_xa2x4")
+region = Rect2(0, 0, 47, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x848m"]
+atlas = ExtResource("1_xa2x4")
+region = Rect2(47, 0, 47, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdsxc"]
+atlas = ExtResource("1_xa2x4")
+region = Rect2(94, 0, 47, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efgdo"]
+atlas = ExtResource("1_xa2x4")
+region = Rect2(141, 0, 47, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j1ym"]
+atlas = ExtResource("1_xa2x4")
+region = Rect2(188, 0, 47, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7r073"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwlfd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x848m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdsxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efgdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j1ym")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="PowerBar" type="HBoxContainer"]
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 255.0
+offset_bottom = 44.0
+scale = Vector2(0.6, 0.68)
+script = ExtResource("1_mdxcd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(64, 19)
+scale = Vector2(2.776, 2)
+sprite_frames = SubResource("SpriteFrames_7r073")

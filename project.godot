@@ -15,6 +15,14 @@ run/main_scene="uid://cqvfktq1lf3c1"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Clickconfirmation="*res://scenes/Sounds/clickconfirmation.tscn"
+SfxHit="*res://scenes/Sounds/sfx_hit.tscn"
+SfxExplosion="*res://scenes/Sounds/sfx_explosion.tscn"
+Score="*res://scenes/score.tscn"
+GameManager="*res://scenes/game_manager.tscn"
+
 [display]
 
 window/size/viewport_width=640
