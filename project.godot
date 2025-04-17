@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="NewtonRoids"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="uid://cqvfktq1lf3c1"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Musica="*res://scenes/musica.tscn"
+Clickconfirmation="*res://scenes/Sounds/clickconfirmation.tscn"
+SfxHit="*res://scenes/Sounds/sfx_hit.tscn"
+SfxExplosion="*res://scenes/Sounds/sfx_explosion.tscn"
+Score="*res://scenes/score.tscn"
+GameManager="*res://scenes/game_manager.tscn"
 
 [display]
 

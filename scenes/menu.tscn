@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://cqvfktq1lf3c1"]
+
+[ext_resource type="Script" uid="uid://c2cqrdf2hygvr" path="res://scripts/menu.gd" id="1_vjb58"]
+[ext_resource type="Texture2D" uid="uid://cyaumxnxv76iv" path="res://assets/img/newtonroidsBACK.png" id="2_4ytvr"]
+[ext_resource type="PackedScene" uid="uid://ds75sko27uf2g" path="res://scenes/Sounds/menu_music.tscn" id="3_con2f"]
+[ext_resource type="FontFile" uid="uid://mj2tustd6xvy" path="res://assets/Fonts/kenvector_future.ttf" id="3_mhnvy"]
+[ext_resource type="FontFile" uid="uid://bgyafi0xdl3ie" path="res://assets/Fonts/kenvector_future_thin.ttf" id="4_4ytvr"]
+[ext_resource type="AudioStream" uid="uid://dkhnbgni1mamq" path="res://assets/SFX/mouseover.ogg" id="6_v86rl"]
+[ext_resource type="AudioStream" uid="uid://4gioggal0pvx" path="res://assets/SFX/mouseoff.ogg" id="7_13sgg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjb58"]
+bg_color = Color(0.811765, 0.486275, 0.0392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_con2f"]
+bg_color = Color(0.758453, 0.164763, 0.242592, 1)
+
+[node name="Control" type="Control"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vjb58")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="MainJuego" type="Sprite2D" parent="ColorRect"]
+position = Vector2(321, 240)
+scale = Vector2(0.463, 0.619)
+texture = ExtResource("2_4ytvr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 641.0
+offset_bottom = 482.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -198.0
+offset_right = 140.0
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Jugar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mhnvy")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_vjb58")
+text = "Jugar"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_4ytvr")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_con2f")
+text = "Salir"
+
+[node name="MenuMusic" parent="." instance=ExtResource("3_con2f")]
+
+[node name="mouseOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_v86rl")
+bus = &"SFX"
+
+[node name="mouseOff" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_13sgg")
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="VBoxContainer/Jugar" to="." method="_on_jugar_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Jugar" to="." method="_on_jugar_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Salir" to="." method="_on_salir_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Salir" to="." method="_on_salir_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

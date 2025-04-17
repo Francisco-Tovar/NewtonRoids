@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctvu1uy356tdp"]
+
+[ext_resource type="Texture2D" uid="uid://j338fysmaonr" path="res://assets/PNG/UI/s_score.png" id="1_naohr"]
+[ext_resource type="Texture2D" uid="uid://cmoq1eqi2nsx1" path="res://assets/PNG/UI/playerLife1_blue.png" id="2_h857v"]
+
+[node name="ShieldContainer" type="HBoxContainer"]
+offset_right = 133.0
+offset_bottom = 40.0
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(64, 27)
+scale = Vector2(3.32979, 3.275)
+texture = ExtResource("1_naohr")
+
+[node name="life" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="life"]
+position = Vector2(21, 20)
+texture = ExtResource("2_h857v")
+
+[node name="life2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="life2"]
+position = Vector2(21, 20)
+texture = ExtResource("2_h857v")
+
+[node name="life3" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="life3"]
+position = Vector2(21, 20)
+texture = ExtResource("2_h857v")

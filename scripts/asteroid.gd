@@ -28,6 +28,10 @@ func _set_random_speed():
 	var speed = randf_range(min_speed, max_speed)
 	velocity *= speed
 
+func get_mass() -> int:
+	return mass
+	
+
 func _wrap_around_screen():
 	var screen_size = get_viewport().size
 	if position.x < 0: position.x = screen_size.x
@@ -37,11 +41,14 @@ func _wrap_around_screen():
 
 func _on_area_entered(other: Area2D) -> void:
 	if other.is_in_group("hoyonegro"):
-		print("SCORE!")
+		SfxExplosion.play()
+		Score.update_score(mass*10)
 		queue_free()
-	elif other.is_in_group("proyectil"):				
-		print("Ateroid hit!")		
+	elif other.is_in_group("proyectil"):		
+		print("mass: " + str(mass))
+		SfxExplosion.play()
+		Score.update_score(mass)
 		queue_free()
 	elif other.is_in_group("nave"):
-		print("Asteroid crash!")		
+		print("Asteroid crash!")
 		queue_free()
