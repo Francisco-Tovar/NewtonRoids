@@ -16,5 +16,5 @@ func spawn_asteroids():
 			randf_range(spawn_margin, screen_size.x - spawn_margin),
 			randf_range(spawn_margin, screen_size.y - spawn_margin)
 		)
-		asteroid.mass = randi_range(5, 20)
+		asteroid.mass = randi_range(100, 150)
 		add_child(asteroid)

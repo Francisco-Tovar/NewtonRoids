@@ -18,8 +18,13 @@ func _physics_process(delta):
 
 func _on_area_2d_area_entered(other: Area2D) -> void:
 	if other.is_in_group("Asteroid"):
-		print("proyectil hit asteroid")		
-		SfxHit.play()		
-		queue_free()	
-	elif other.is_in_group("hoyonegro"):		
+		print("proyectil hit asteroid")
+		SfxHit.play()
+
+		# Lógica de empuje y daño
+		if other.has_method("push_from_impact") and other.has_method("reduce_mass"):
+			var direction = (other.global_position - global_position).normalized()
+			other.push_from_impact(direction, potencia * 120)
+			other.reduce_mass(10) # Puedes ajustar cuánto daño hace
+
 		queue_free()
