@@ -12,6 +12,8 @@ func _ready():
 	_set_random_direction()
 	_set_random_speed()
 	rotation_speed = randf_range(-1, 1)
+	_update_mass_display()
+	$MassLabel.visible = false
 
 func _process(delta):
 	position += velocity * delta
@@ -30,7 +32,6 @@ func _set_random_speed():
 
 func get_mass() -> int:
 	return mass
-	
 
 func _wrap_around_screen():
 	var screen_size = get_viewport().size
@@ -42,13 +43,53 @@ func _wrap_around_screen():
 func _on_area_entered(other: Area2D) -> void:
 	if other.is_in_group("hoyonegro"):
 		SfxExplosion.play()
-		Score.update_score(mass*10)
+		Score.update_score(mass * 10)
 		queue_free()
-	elif other.is_in_group("proyectil"):		
-		print("mass: " + str(mass))
-		SfxExplosion.play()
-		Score.update_score(mass)
-		queue_free()
+	elif other.is_in_group("proyectil"):
+		print("¡Asteroide impactado!")
 	elif other.is_in_group("nave"):
 		print("Asteroid crash!")
 		queue_free()
+	elif other.is_in_group("Asteroid"):
+		# Colisión visual entre asteroides (no daña)
+		_process_asteroid_collision(other)
+
+func _process_asteroid_collision(other: Area2D):
+	if other == self:
+		return
+
+	var direction = (global_position - other.global_position).normalized()
+	var bounce_force = 30.0
+
+	if "velocity" in other:
+		velocity += direction * bounce_force
+		other.velocity -= direction * bounce_force
+
+func _update_mass_display():
+	if has_node("MassLabel"):
+		$MassLabel.text = str(mass)
+
+func reduce_mass(amount: int):
+	mass -= amount
+	if mass < 0:
+		mass = 0
+	$MassLabel.visible = true
+	_update_mass_display()
+	_update_visual()
+	_check_destroy()
+
+func _check_destroy():
+	if mass <= 0:
+		SfxExplosion.play()
+		queue_free()
+
+func _update_visual():
+	if mass > 70:
+		$Sprite2D.modulate = Color.WHITE
+	elif mass > 30:
+		$Sprite2D.modulate = Color.ORANGE
+	else:
+		$Sprite2D.modulate = Color.RED
+
+func push_from_impact(impact_dir: Vector2, force: float = 100.0):
+	velocity += impact_dir.normalized() * force

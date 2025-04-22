@@ -62,7 +62,7 @@ func fire(potencia: float):
 	get_parent().add_child(_disparo)
 
 	# Retroceso proporcional a la potencia
-	var recoil_force = -Vector2(1, 0).rotated(rotation) * (0.5 * potencia)
+	var recoil_force = -Vector2(1, 0).rotated(rotation) * (0.3 * potencia)
 	motion += recoil_force
 
 	can_fire = false
@@ -106,12 +106,24 @@ func _on_area_2d_area_entered(other: Area2D) -> void:
 	elif other.is_in_group("Asteroid"):
 		print("escudo -1 = " + str(escudo))
 		take_damage()
-		if escudo <= 0: 
-			can_move = false
-		sfx_ship_crash.play()
-		await get_tree().create_timer(1.0).timeout		
-	
+
+	apply_knockback(other.global_position, 200.0)
+
+	if other.has_method("push_from_impact"):
+		var direction = (other.global_position - global_position).normalized()
+		other.push_from_impact(direction, 50.0)
+
+	sfx_ship_crash.play()
+
+	if escudo <= 0:
+		can_move = false
+		await get_tree().create_timer(1.0).timeout
+
 	if escudo <= 0:
 		print("YOU DIED!")
 		can_move = false
 		get_tree().reload_current_scene()		
+
+func apply_knockback(from_position: Vector2, force: float = 200.0):
+	var direction = (global_position - from_position).normalized()
+	motion += direction * (force / MOVE_SPEED)
