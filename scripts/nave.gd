@@ -15,6 +15,7 @@ const DEC = 0.01
 const MAX_POTENCIA = 5.0 # máximo de potencia
 
 var proyectil = preload("res://scenes/proyectil.tscn")
+var explosion = preload("res://scenes/ExplodeNode.tscn")
 @export var fire_rate = 0.2
 var can_fire = true
 var can_move = true
@@ -94,13 +95,20 @@ func _physics_process(delta: float) -> void:
 		motion = motion.lerp(Vector2(0,0), ACC)
 		position += motion * MOVE_SPEED * delta
 
+func explode():
+	var explosion = explosion.instantiate()
+	explosion.global_position = global_position
+	get_parent().add_child(explosion)
+
 func _on_area_2d_area_entered(other: Area2D) -> void:
 	if other.is_in_group("hoyonegro"):
+		explode()
+		visible = false;
 		escudo = 0
 		can_move = false
 		lives.SetLives(escudo)
 		lives.DrawLives()
-		SfxExplosion.play()
+		SfxExplosion.play()		
 		await get_tree().create_timer(1.0).timeout
 		
 	elif other.is_in_group("Asteroid"):
@@ -111,7 +119,9 @@ func _on_area_2d_area_entered(other: Area2D) -> void:
 		other.push_from_impact(direction, 50.0)
 	sfx_ship_crash.play()
 	if escudo <= 0:
-		can_move = false
+		visible  = false;
+		explode()
+		can_move = false		
 		await get_tree().create_timer(1.0).timeout
 		get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
 

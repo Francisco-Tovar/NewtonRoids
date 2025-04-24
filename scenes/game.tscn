@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqaiyn5nqggpj"]
+[gd_scene load_steps=14 format=3 uid="uid://dqaiyn5nqggpj"]
 
 [ext_resource type="Script" uid="uid://bxagfp1ket7d" path="res://scripts/game.gd" id="1_5xocs"]
 [ext_resource type="PackedScene" uid="uid://c20w1oa160mph" path="res://scenes/nave.tscn" id="1_82h87"]
@@ -16,6 +16,16 @@
 shader = ExtResource("2_57tv2")
 shader_parameter/xSpeed = 0.1
 shader_parameter/ySpeed = 0.1
+
+[sub_resource type="Environment" id="Environment_kvpfn"]
+background_mode = 3
+tonemap_mode = 4
+tonemap_exposure = 2.11
+glow_enabled = true
+glow_intensity = 1.75
+glow_bloom = 0.2
+fog_mode = 1
+fog_density = 1.0
 
 [node name="Juego" type="Node2D"]
 script = ExtResource("1_5xocs")
@@ -77,3 +87,6 @@ offset_top = 460.0
 offset_right = 718.345
 offset_bottom = 500.0
 scale = Vector2(0.365, 0.26)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kvpfn")

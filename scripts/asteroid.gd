@@ -6,6 +6,7 @@ extends Area2D
 @export var rotation_speed: float = 1.0
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+var explosion = preload("res://scenes/ExplodeNode.tscn")
 var velocity = Vector2.ZERO
 
 func _ready():
@@ -35,6 +36,11 @@ func _set_random_speed():
 func get_mass() -> int:
 	return mass
 
+func explode():
+	var _explosion = explosion.instantiate()
+	_explosion.global_position = global_position
+	get_tree().get_current_scene().add_child(_explosion)
+
 func _wrap_around_screen():
 	var screen_size = get_viewport().size
 	if position.x < 0: position.x = screen_size.x
@@ -46,12 +52,13 @@ func _on_area_entered(other: Area2D) -> void:
 	if other.is_in_group("hoyonegro"):
 		SfxExplosion.play()
 		Score.update_score(mass * 10)
+		explode()
 		queue_free()
 	elif other.is_in_group("proyectil"):
-		print("¡Asteroide impactado!")
+		explode()
 		_update_visual()
 	elif other.is_in_group("nave"):
-		print("Asteroid crash!")
+		explode()
 		queue_free()
 	elif other.is_in_group("Asteroid"):
 		# Colisión visual entre asteroides (no daña)
@@ -77,17 +84,18 @@ func reduce_mass(amount: int):
 	$MassLabel.visible = true
 	_update_mass_display()
 	_update_visual()
-	_check_destroy()
+	_check_destroy()	
 
 func _check_destroy():
 	if mass <= 0:
 		SfxExplosion.play()
+		explode()
 		queue_free()
 
 func _update_visual():
 	var _scale = sprite_2d.scale
 	var perc = (mass * 100)/150	
-	sprite_2d.scale.x = _scale * perc/100
+	sprite_2d.scale = _scale * perc/100
 	
 	if mass > 90:
 		sprite_2d.self_modulate = Color.WHITE

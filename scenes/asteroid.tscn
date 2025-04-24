@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://xs7p6pjo0hw6" path="res://assets/PNG/Meteors/meteorBrown_big1.png" id="1_akfqu"]
 [ext_resource type="FontFile" uid="uid://bktgvfiu6l3en" path="res://assets/Fonts/PixelOperator8.ttf" id="3_t4se3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6mo6b"]
-radius = 16.0312
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4se3"]
+radius = 42.107
 
 [node name="Asteroid" type="Area2D" groups=["Asteroid"]]
 script = ExtResource("1_6mo6b")
@@ -15,10 +15,6 @@ texture = ExtResource("1_akfqu")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -1)
-shape = SubResource("CircleShape2D_6mo6b")
-
 [node name="MassLabel" type="Label" parent="."]
 offset_left = -11.0
 offset_top = -30.0
@@ -27,5 +23,10 @@ offset_bottom = -22.0
 theme_override_fonts/font = ExtResource("3_t4se3")
 theme_override_font_sizes/font_size = 8
 text = "100"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -3)
+scale = Vector2(1, 0.880001)
+shape = SubResource("CircleShape2D_t4se3")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

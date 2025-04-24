@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgj4f8euxeock"]
+
+[ext_resource type="Script" uid="uid://etxpd48c2p6x" path="res://scripts/explode.gd" id="1_0lenp"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1i16a"]
+resource_local_to_scene = true
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="explodesprite" type="Node2D"]
+material = SubResource("CanvasItemMaterial_1i16a")
+script = ExtResource("1_0lenp")
