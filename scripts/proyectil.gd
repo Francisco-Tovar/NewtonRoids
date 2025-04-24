@@ -12,19 +12,14 @@ func _ready():
 func _physics_process(delta):
 	var move_vec = Vector2.RIGHT.rotated(dir) * velocidad_base * potencia * delta
 	position += move_vec
-	# Para CharacterBody2D, deberías usar:
-	# velocity = move_vec / delta  # Convertir a velocidad por segundo
-	# move_and_slide()
 
 func _on_area_2d_area_entered(other: Area2D) -> void:
 	if other.is_in_group("Asteroid"):
 		print("proyectil hit asteroid")
 		SfxHit.play()
-
 		# Lógica de empuje y daño
 		if other.has_method("push_from_impact") and other.has_method("reduce_mass"):
 			var direction = (other.global_position - global_position).normalized()
 			other.push_from_impact(direction, potencia * 120)
-			other.reduce_mass(10) # Puedes ajustar cuánto daño hace
-
+			other.reduce_mass(10 * potencia) # Puedes ajustar cuánto daño hace
 		queue_free()

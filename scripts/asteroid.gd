@@ -4,6 +4,7 @@ extends Area2D
 @export var min_speed: float = 15.0
 @export var max_speed: float = 30.0
 @export var rotation_speed: float = 1.0
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var velocity = Vector2.ZERO
 
@@ -13,11 +14,12 @@ func _ready():
 	_set_random_speed()
 	rotation_speed = randf_range(-1, 1)
 	_update_mass_display()
-	$MassLabel.visible = false
+	$MassLabel.visible = true
+	_update_visual()
 
 func _process(delta):
 	position += velocity * delta
-	rotation += rotation_speed * delta
+	rotation += rotation_speed * delta	
 	_wrap_around_screen()
 
 func _set_random_direction():
@@ -47,6 +49,7 @@ func _on_area_entered(other: Area2D) -> void:
 		queue_free()
 	elif other.is_in_group("proyectil"):
 		print("¡Asteroide impactado!")
+		_update_visual()
 	elif other.is_in_group("nave"):
 		print("Asteroid crash!")
 		queue_free()
@@ -57,10 +60,8 @@ func _on_area_entered(other: Area2D) -> void:
 func _process_asteroid_collision(other: Area2D):
 	if other == self:
 		return
-
 	var direction = (global_position - other.global_position).normalized()
 	var bounce_force = 30.0
-
 	if "velocity" in other:
 		velocity += direction * bounce_force
 		other.velocity -= direction * bounce_force
@@ -84,12 +85,16 @@ func _check_destroy():
 		queue_free()
 
 func _update_visual():
-	if mass > 70:
-		$Sprite2D.modulate = Color.WHITE
-	elif mass > 30:
-		$Sprite2D.modulate = Color.ORANGE
+	var _scale = sprite_2d.scale
+	var perc = (mass * 100)/150	
+	sprite_2d.scale.x = _scale * perc/100
+	
+	if mass > 90:
+		sprite_2d.self_modulate = Color.WHITE
+	elif mass > 50:
+		sprite_2d.self_modulate = Color.ORANGE
 	else:
-		$Sprite2D.modulate = Color.RED
+		sprite_2d.self_modulate = Color.RED
 
 func push_from_impact(impact_dir: Vector2, force: float = 100.0):
 	velocity += impact_dir.normalized() * force
