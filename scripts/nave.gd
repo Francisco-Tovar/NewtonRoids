@@ -96,9 +96,9 @@ func _physics_process(delta: float) -> void:
 		position += motion * MOVE_SPEED * delta
 
 func explode():
-	var explosion = explosion.instantiate()
-	explosion.global_position = global_position
-	get_parent().add_child(explosion)
+	var _explosion = explosion.instantiate()
+	_explosion.global_position = global_position
+	get_parent().add_child(_explosion)
 
 func _on_area_2d_area_entered(other: Area2D) -> void:
 	if other.is_in_group("hoyonegro"):		

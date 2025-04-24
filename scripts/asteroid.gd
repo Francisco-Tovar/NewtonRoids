@@ -96,14 +96,14 @@ func _check_destroy():
 
 func _update_visual():
 	var _scale = scale
-	var perc = (mass * 100)/150	
-	scale = _scale * perc/100	
+	var perc = (mass * 100)/150
+	sprite_2d.scale = _scale * perc/100	
 	if mass > 90:
-		self_modulate = Color.WHITE
+		sprite_2d.self_modulate = Color.WHITE
 	elif mass > 50:
-		self_modulate = Color.ORANGE
+		sprite_2d.self_modulate = Color.ORANGE
 	else:
-		self_modulate = Color.RED
+		sprite_2d.self_modulate = Color.RED
 
 func push_from_impact(impact_dir: Vector2, force: float = 100.0):
 	velocity += impact_dir.normalized() * force
