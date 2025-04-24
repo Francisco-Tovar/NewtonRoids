@@ -6,6 +6,9 @@ var score = 0
 func restart():
 	score = 0
 
+func get_score() -> int:
+	return score
+
 func _process(delta: float) -> void:
 	score_label.text = str(score)
 

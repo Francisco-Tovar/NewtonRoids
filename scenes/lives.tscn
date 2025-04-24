@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctvu1uy356tdp"]
+[gd_scene load_steps=4 format=3 uid="uid://ctvu1uy356tdp"]
 
+[ext_resource type="Script" uid="uid://bvn83jkuoaphu" path="res://scripts/lives.gd" id="1_h857v"]
 [ext_resource type="Texture2D" uid="uid://j338fysmaonr" path="res://assets/PNG/UI/s_score.png" id="1_naohr"]
 [ext_resource type="Texture2D" uid="uid://cmoq1eqi2nsx1" path="res://assets/PNG/UI/playerLife1_blue.png" id="2_h857v"]
 
-[node name="ShieldContainer" type="HBoxContainer"]
-offset_right = 133.0
+[node name="Lives" type="HBoxContainer"]
+offset_right = 134.345
 offset_bottom = 40.0
+script = ExtResource("1_h857v")
 
 [node name="background" type="Sprite2D" parent="."]
 position = Vector2(64, 27)

@@ -1,0 +1,119 @@
+[gd_scene load_steps=11 format=3 uid="uid://70ivme41s6gq"]
+
+[ext_resource type="Texture2D" uid="uid://dwk2yha7cw4sh" path="res://assets/img/game over.jpg" id="1_qae0b"]
+[ext_resource type="Script" uid="uid://g6vgbj7o7kno" path="res://scripts/game_over.gd" id="1_vuicl"]
+[ext_resource type="FontFile" uid="uid://bktgvfiu6l3en" path="res://assets/Fonts/PixelOperator8.ttf" id="2_vuicl"]
+[ext_resource type="FontFile" uid="uid://mj2tustd6xvy" path="res://assets/Fonts/kenvector_future.ttf" id="4_gijjb"]
+[ext_resource type="FontFile" uid="uid://bgyafi0xdl3ie" path="res://assets/Fonts/kenvector_future_thin.ttf" id="5_88ekj"]
+[ext_resource type="AudioStream" uid="uid://dkhnbgni1mamq" path="res://assets/SFX/mouseover.ogg" id="6_0winm"]
+[ext_resource type="AudioStream" uid="uid://4gioggal0pvx" path="res://assets/SFX/mouseoff.ogg" id="7_j3qfp"]
+[ext_resource type="PackedScene" uid="uid://ds75sko27uf2g" path="res://scenes/Sounds/menu_music.tscn" id="8_j3qfp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0winm"]
+bg_color = Color(0.811765, 0.486275, 0.0392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qfp"]
+bg_color = Color(0.758453, 0.164763, 0.242592, 1)
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vuicl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qae0b")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = -113.0
+offset_top = 175.0
+offset_right = -73.0
+offset_bottom = 215.0
+scale = Vector2(22.0526, 2.28)
+color = Color(0.0352941, 0.0352941, 0.0352941, 0.729412)
+
+[node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(720, 100)
+offset_left = 48.0
+offset_top = 170.0
+offset_right = 768.0
+offset_bottom = 270.0
+scale = Vector2(0.759999, 1)
+theme_override_colors/default_color = Color(0.857223, 0.866072, 0.211749, 1)
+theme_override_fonts/normal_font = ExtResource("2_vuicl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave]  FINAL SCORE: 
+[/wave]"
+vertical_alignment = 1
+
+[node name="ScoreLabelValue" type="RichTextLabel" parent="CanvasLayer/ScoreLabel"]
+custom_minimum_size = Vector2(720, 100)
+layout_mode = 0
+offset_top = -1.85748
+offset_right = 720.0
+offset_bottom = 98.1425
+theme_override_colors/default_color = Color(0.857223, 0.866072, 0.211749, 1)
+theme_override_fonts/normal_font = ExtResource("2_vuicl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "0  "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -107.0
+offset_top = -151.0
+offset_right = 128.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="reintentar" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_gijjb")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_0winm")
+text = "  Reintentar  "
+
+[node name="Salir" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_88ekj")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/normal = SubResource("StyleBoxFlat_j3qfp")
+text = "Salir"
+
+[node name="mouseOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_0winm")
+bus = &"SFX"
+playback_type = 1
+
+[node name="mouseOff" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_j3qfp")
+bus = &"SFX"
+playback_type = 1
+
+[node name="MenuMusic" parent="." instance=ExtResource("8_j3qfp")]
+
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/reintentar" to="." method="_on_reintentar_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/reintentar" to="." method="_on_reintentar_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/reintentar" to="." method="_on_reintentar_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_salir_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_salir_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Salir" to="." method="_on_salir_pressed"]

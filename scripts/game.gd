@@ -10,5 +10,7 @@ func _process(_delta):
 		Score.restart()
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 	elif Input.is_action_just_pressed("reset"):
-		Score.restart()
+		Score.restart()		
 		get_tree().reload_current_scene()
+	elif Input.is_action_just_pressed("die"):
+		get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
