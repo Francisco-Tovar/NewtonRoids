@@ -5,6 +5,8 @@ extends Area2D
 @export var max_speed: float = 30.0
 @export var rotation_speed: float = 1.0
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var mass_label: Label = $MassLabel
+
 
 var explosion = preload("res://scenes/ExplodeNode.tscn")
 var velocity = Vector2.ZERO
@@ -15,7 +17,7 @@ func _ready():
 	_set_random_speed()
 	rotation_speed = randf_range(-1, 1)
 	_update_mass_display()
-	$MassLabel.visible = true
+	mass_label.visible = true
 	_update_visual()
 
 func _process(delta):
@@ -75,13 +77,13 @@ func _process_asteroid_collision(other: Area2D):
 
 func _update_mass_display():
 	if has_node("MassLabel"):
-		$MassLabel.text = str(mass)
+		mass_label.text = str(mass)
 
 func reduce_mass(amount: int):
 	mass -= amount
 	if mass < 0:
 		mass = 0
-	$MassLabel.visible = true
+	mass_label.visible = true
 	_update_mass_display()
 	_update_visual()
 	_check_destroy()	
@@ -93,15 +95,15 @@ func _check_destroy():
 		queue_free()
 
 func _update_visual():
-	var _scale = sprite_2d.scale
+	var _scale = scale
 	var perc = (mass * 100)/150	
-	sprite_2d.scale = _scale * perc/100	
+	scale = _scale * perc/100	
 	if mass > 90:
-		sprite_2d.self_modulate = Color.WHITE
+		self_modulate = Color.WHITE
 	elif mass > 50:
-		sprite_2d.self_modulate = Color.ORANGE
+		self_modulate = Color.ORANGE
 	else:
-		sprite_2d.self_modulate = Color.RED
+		self_modulate = Color.RED
 
 func push_from_impact(impact_dir: Vector2, force: float = 100.0):
 	velocity += impact_dir.normalized() * force

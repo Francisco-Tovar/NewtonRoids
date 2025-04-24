@@ -30,15 +30,6 @@ fog_density = 1.0
 [node name="Juego" type="Node2D"]
 script = ExtResource("1_5xocs")
 
-[node name="PowerBar" parent="." instance=ExtResource("3_vtaks")]
-unique_name_in_owner = true
-z_index = 2
-offset_left = 4.0
-offset_top = 459.0
-offset_right = 256.0
-offset_bottom = 499.0
-scale = Vector2(0.44, 0.400004)
-
 [node name="camara" type="Camera2D" parent="."]
 position = Vector2(320, 241)
 
@@ -54,10 +45,6 @@ texture = ExtResource("3_kr8jx")
 expand_mode = 2
 stretch_mode = 1
 
-[node name="hoyoNegro" parent="." instance=ExtResource("5_1fv1s")]
-position = Vector2(326, 118)
-scale = Vector2(0.21, 0.21)
-
 [node name="jugador" parent="." instance=ExtResource("1_82h87")]
 position = Vector2(316, 405)
 scale = Vector2(0.25, 0.25)
@@ -68,6 +55,22 @@ scale = Vector2(0.25, 0.25)
 z_index = 3
 script = ExtResource("6_u5sy4")
 asteroid_scene = ExtResource("6_p57ef")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kvpfn")
+
+[node name="hoyoNegro" parent="." instance=ExtResource("5_1fv1s")]
+position = Vector2(326, 118)
+scale = Vector2(0.21, 0.21)
+
+[node name="PowerBar" parent="." instance=ExtResource("3_vtaks")]
+unique_name_in_owner = true
+z_index = 2
+offset_left = 4.0
+offset_top = 459.0
+offset_right = 256.0
+offset_bottom = 499.0
+scale = Vector2(0.44, 0.400004)
 
 [node name="helpLabel" type="Label" parent="."]
 offset_left = 4.0
@@ -86,8 +89,4 @@ offset_left = 584.0
 offset_top = 460.0
 offset_right = 718.345
 offset_bottom = 500.0
-scale = Vector2(0.365, 0.26)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_kvpfn")
-
+scale = Vector2(0.365, 0.3)

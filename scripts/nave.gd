@@ -101,15 +101,13 @@ func explode():
 	get_parent().add_child(explosion)
 
 func _on_area_2d_area_entered(other: Area2D) -> void:
-	if other.is_in_group("hoyonegro"):
-		explode()
+	if other.is_in_group("hoyonegro"):		
 		visible = false;
 		escudo = 0
 		can_move = false
 		lives.SetLives(escudo)
 		lives.DrawLives()
-		SfxExplosion.play()		
-		await get_tree().create_timer(1.0).timeout
+		SfxExplosion.play()
 		
 	elif other.is_in_group("Asteroid"):
 		take_damage()
