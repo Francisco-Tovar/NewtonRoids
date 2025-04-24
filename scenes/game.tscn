@@ -90,3 +90,4 @@ scale = Vector2(0.365, 0.26)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kvpfn")
+

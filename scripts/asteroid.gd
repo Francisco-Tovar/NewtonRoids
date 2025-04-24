@@ -95,8 +95,7 @@ func _check_destroy():
 func _update_visual():
 	var _scale = sprite_2d.scale
 	var perc = (mass * 100)/150	
-	sprite_2d.scale = _scale * perc/100
-	
+	sprite_2d.scale = _scale * perc/100	
 	if mass > 90:
 		sprite_2d.self_modulate = Color.WHITE
 	elif mass > 50:
