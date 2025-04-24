@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqvfktq1lf3c1"]
+[gd_scene load_steps=10 format=3 uid="uid://d3i7ypq1tic8h"]
 
-[ext_resource type="Script" uid="uid://c2cqrdf2hygvr" path="res://scripts/menu.gd" id="1_vjb58"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_vjb58"]
 [ext_resource type="Texture2D" uid="uid://cyaumxnxv76iv" path="res://assets/img/newtonroidsBACK.png" id="2_4ytvr"]
 [ext_resource type="PackedScene" uid="uid://ds75sko27uf2g" path="res://scenes/Sounds/menu_music.tscn" id="3_con2f"]
 [ext_resource type="FontFile" uid="uid://mj2tustd6xvy" path="res://assets/Fonts/kenvector_future.ttf" id="3_mhnvy"]

@@ -22,6 +22,7 @@ SfxHit="*res://scenes/Sounds/sfx_hit.tscn"
 SfxExplosion="*res://scenes/Sounds/sfx_explosion.tscn"
 Score="*res://scenes/score.tscn"
 GameManager="*res://scenes/game_manager.tscn"
+Musica="*res://scenes/musica.tscn"
 
 [display]
 

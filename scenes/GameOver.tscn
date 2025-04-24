@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://70ivme41s6gq"]
+
+[ext_resource type="Texture2D" uid="uid://bl4nbdxf1bpa4" path="res://assets/img/game over.jpg" id="1_qae0b"]
+[ext_resource type="Script" uid="uid://g6vgbj7o7kno" path="res://scripts/game_over.gd" id="1_vuicl"]
+[ext_resource type="FontFile" uid="uid://bktgvfiu6l3en" path="res://assets/Fonts/PixelOperator8.ttf" id="2_vuicl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4noiy"]
+bg_color = Color(0.361575, 0.361576, 0.361575, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88ekj"]
+bg_color = Color(0.939602, 0.429624, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0winm"]
+bg_color = Color(0.407056, 0.407056, 0.407056, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gijjb"]
+bg_color = Color(0.913725, 0, 0, 1)
+
+[node name="game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vuicl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qae0b")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/CenterContainer"]
+custom_minimum_size = Vector2(720, 100)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.857223, 0.866072, 0.211749, 1)
+theme_override_fonts/normal_font = ExtResource("2_vuicl")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center][wave]SCORE: 0
+
+Time: 0[/wave][/center]"
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="reintentar" type="Button" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(23, 0)
+layout_mode = 0
+offset_left = 110.0
+offset_top = 340.0
+offset_right = 297.0
+offset_bottom = 385.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vuicl")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_4noiy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_88ekj")
+text = "REINTENTAR"
+
+[node name="salir" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 400.0
+offset_top = 320.0
+offset_right = 485.0
+offset_bottom = 365.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vuicl")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_0winm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gijjb")
+text = "SALIR"
+
+[node name="mouseOver" type="AudioStreamPlayer2D" parent="."]
+playback_type = 1
+
+[node name="mouseOff" type="AudioStreamPlayer2D" parent="."]
+playback_type = 1
